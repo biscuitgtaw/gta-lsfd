@@ -8,13 +8,17 @@
 
     <div class="container-fluid">
 
+        @can('create_rank')
     	<div class="row">
     		<div class="col-lg-12 mb-3">
     			<div class="float-right">
+                    
     				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#antelope-create-rank-modal">+ {!! __('rank_management.create_rank') !!}</button>
+
     			</div>
     		</div>
     	</div>
+        @endcan
 
         <div class="row">
             <div class="col-lg-12">

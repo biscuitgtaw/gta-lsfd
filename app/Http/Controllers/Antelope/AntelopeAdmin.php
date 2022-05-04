@@ -34,7 +34,7 @@ class AntelopeAdmin extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware(['permission:admin']);
+        $this->middleware(['permission:get_admin_tab']);
         $this->constants = \Config::get('constants');
 
         View::share('constants', $this->constants);
@@ -50,6 +50,9 @@ class AntelopeAdmin extends Controller
      */
     public function user_management_index()
     {
+        if(!auth()->user()->can('view_user_management')) {
+            return abort(403);
+        }
         return view('admin.user_management');
     }
 
@@ -63,6 +66,9 @@ class AntelopeAdmin extends Controller
      */
     public function user_management_table()
     {
+        if(!auth()->user()->can('view_user_management')) {
+            return abort(403);
+        }
         $query = User::query()->select([
             'id AS id',
             'username AS username',
@@ -87,6 +93,9 @@ class AntelopeAdmin extends Controller
      */
     public function rank_management_index()
     {
+        if(!auth()->user()->can('view_rank_management')) {
+            return abort(403);
+        }
         return view('admin.rank_management');
     }
 
@@ -100,6 +109,9 @@ class AntelopeAdmin extends Controller
      */
     public function rank_management_table()
     {
+        if(!auth()->user()->can('view_rank_management')) {
+            return abort(403);
+        }
         $query = Role::query()
             ->select([
                 'id AS id',
@@ -125,11 +137,14 @@ class AntelopeAdmin extends Controller
      */
     public function addUser(Request $request)
     {
+        if(!auth()->user()->can('create_user')) {
+            return abort(403);
+        }
         $this->validate($request, [
             'username' => 'required|unique:users',
             'name' => 'required|min:3',
             'password' => 'required|min:8',
-            'email' => 'nullable|unique:email',
+            'email' => 'nullable|unique:users',
             'rank' => 'nullable|integer|exists:roles,id'
         ]);
 
@@ -152,6 +167,9 @@ class AntelopeAdmin extends Controller
      */
     public function editUserFetch(Request $request)
     {
+        if(!auth()->user()->can('edit_user')) {
+            return view('components.auth.lack_perms');
+        }
         $user = User::find($request['id']);
 
         return view('ajax.edit_user_fetch', ['user' => $user]);
@@ -167,6 +185,9 @@ class AntelopeAdmin extends Controller
      */
     public function editUser(Request $request)
     {
+        if(!auth()->user()->can('edit_user')) {
+            return abort(403);
+        }
         $user = User::find($request['id']);
 
         $this->validate($request, [
@@ -193,6 +214,9 @@ class AntelopeAdmin extends Controller
      */
     public function addRank(Request $request)
     {
+        if(!auth()->user()->can('create_rank')) {
+            return abort(403);
+        }
         $this->validate($request, [
             'name' => 'required|string|unique:roles',
             'display_name' => 'required',
@@ -218,6 +242,9 @@ class AntelopeAdmin extends Controller
      */
     public function editRankFetch(Request $request)
     {
+        if(!auth()->user()->can('edit_rank')) {
+            return view('components.auth.lack_perms');
+        }
         $role = Role::find($request['id']);
 
         return view('ajax.edit_rank_fetch', ['role' => $role]);
@@ -233,6 +260,9 @@ class AntelopeAdmin extends Controller
      */
     public function editRank(Request $request)
     {
+        if(!auth()->user()->can('edit_rank')) {
+            return abort(403);
+        }
         $role = Role::find($request['id']);
 
         $this->validate($request, [

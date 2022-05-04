@@ -37,21 +37,27 @@
                 </li>
 
 
-                @can('admin')
+                @can('get_admin_tab')
                 <li @if(str_contains($route, "admin_") && !str_contains($route, "superadmin_")) class="active" @endif>
                     <a href="#antelope-sidebar-admin" class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false"><i class="ri-shield-star-fill"></i><span>{!! __('features.admin') !!}</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                     <ul id="antelope-sidebar-admin" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                        @can('view_user_management')
                         <li><a href="/admin/user_management">{!! __('features.admin_user_management') !!}</a></li>
+                        @endcan
+                        @can('view_rank_management')
                         <li><a href="/admin/rank_management">{!! __('features.admin_rank_management') !!}</a></li>
+                        @endcan
                     </ul>
                 </li>
                 @endcan
 
-                @can('superadmin')
+                @can('get_superadmin_tab')
                 <li @if(str_contains($route, "superadmin_")) class="active" @endif>
                     <a href="#antelope-sidebar-superadmin" class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false"><i class="ri-server-line"></i><span>{!! __('features.superadmin') !!}</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                     <ul id="antelope-sidebar-superadmin" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                        @can('view_universe_settings')
                         <li><a href="/superadmin/universe_settings">Universe Settings</a></li>
+                        @endcan
 
                         @if(env('APP_ENV', 'production') == 'local')
                         <li><a href="/developer_debug">Antelope Developers</a></li>
@@ -60,9 +66,11 @@
                 </li>
                 @endcan
 
-                @can('incident_reporter')
+                @can('get_incident_reporter_tab')
                 <li class="iq-menu-title"><i class="ri-separator"></i><span>{!! __('core.incident_reporter') !!}</span></li>
+                @endcan
 
+                @can('view_incident_center')
                 <li @if($route == "ir_control_center") class="active" @endif>
                     <a href="/incident_reporter/control_center" class="iq-waves-effect"><i class="ri-customer-service-line"></i><span>{!! __('features.ir_control_center') !!}</span></a>
                 </li>

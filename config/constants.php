@@ -97,9 +97,24 @@ return [
     ],
 
     'site_permissions' => [
-        'superadmin',
-        'admin',
-        'incident_reporter',
-        'fire_explorer'
+        'get_superadmin_tab',
+        'get_admin_tab',
+        'get_incident_reporter_tab',
+        'view_user_management',
+        'view_rank_management',
+        'create_user',
+        'edit_user',
+        'create_rank',
+        'edit_rank',
+        'view_incident_details',
+        'view_incident_timeline',
+        'view_universe_settings',
+        'edit_own_profile',
+        'edit_own_password',
+        'view_incident_center',
+        'view_incident_manager_panel',
+        'create_incident',
+        'edit_incident',
+        'manage_incident_timeline',
     ],
 ];

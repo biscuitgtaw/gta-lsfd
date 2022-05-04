@@ -9,6 +9,7 @@
             <span aria-hidden="true">×</span>
             </button>
          </div>
+         @can('create_user')
          <form class="form-horizontal" id="antelope-create-user-form">
             <div class="modal-body">
                <div class="form-group row">
@@ -57,6 +58,9 @@
                <button type="submit" class="btn btn-success">+ {!! __('user_management.create_user') !!}</button>
             </div>
          </form>
+         @else
+         <x-auth.lack_perms/>
+         @endcan
       </div>
    </div>
 </div>

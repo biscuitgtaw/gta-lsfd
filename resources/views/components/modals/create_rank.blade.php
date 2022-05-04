@@ -9,6 +9,7 @@
             <span aria-hidden="true">×</span>
             </button>
          </div>
+         @can('create_rank')
          <form class="form-horizontal" id="antelope-create-rank-form">
             <div class="modal-body">
                <div class="form-group row">
@@ -52,6 +53,9 @@
                <button type="submit" class="btn btn-success">+ {!! __('rank_management.create_rank') !!}</button>
             </div>
          </form>
+         @else
+         <x-auth.lack_perms/>
+         @endcan
       </div>
    </div>
 </div>

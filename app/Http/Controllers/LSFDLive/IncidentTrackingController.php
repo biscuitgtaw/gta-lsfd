@@ -60,7 +60,7 @@ class IncidentTrackingController extends Controller
     public function create(Request $request)
     {
         $this->middleware('auth');
-        if(!auth()->user()->hasPermissionTo('incident_reporter')) {
+        if(!auth()->user()->hasPermissionTo('create_incident')) {
             return abort(403);
         }
 
@@ -100,7 +100,7 @@ class IncidentTrackingController extends Controller
     public function modify($id, Request $request)
     {
         $this->middleware('auth');
-        if(!auth()->user()->hasPermissionTo('incident_reporter')) {
+        if(!auth()->user()->hasPermissionTo('edit_incident')) {
             return abort(403);
         }
 

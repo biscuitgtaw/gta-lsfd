@@ -29,7 +29,7 @@ class AntelopeSA extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware(['permission:superadmin']);
+        $this->middleware(['permission:get_superadmin_tab']);
         $this->constants = \Config::get('constants');
 
         View::share('constants', $this->constants);
@@ -45,9 +45,12 @@ class AntelopeSA extends Controller
      */
     public function universe_settings()
     {
-        return view('superadmin.universe_settings');
+        if(!auth()->user()->can('view_universe_settings')) {
+            return abort(403);
+        }
+        return \Config::get('constants');
     }
-
+    
     /* File location: App/Http/Controllers/AntelopeSA.php */
     /* End of File - AntelopeSA.php */
 }

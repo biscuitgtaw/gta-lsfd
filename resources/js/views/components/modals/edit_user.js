@@ -44,12 +44,13 @@ $('#antelope-edit-user-form').on('submit', function(e) {
     var username = $('#antelope-edit-user-input-username').val();
     var email = $('#antelope-edit-user-input-email').val();
     var rank = $('#antelope-edit-user-input-rank').val();
+    var name = $('#antelope-edit-user-input-name').val();
     clearErrors(form);
 
     $.ajax({
         type: 'PUT',
         url: base_url + '/admin/edit_user',
-        data: {'id':id, 'username':username, 'email':email, 'rank': rank},
+        data: {'id':id, 'username':username, 'email':email, 'name': name},
         success: function(data) {
             $('#datatable').DataTable().ajax.reload();
             toastr.info(Lang.get('rank_management.user_edited'));

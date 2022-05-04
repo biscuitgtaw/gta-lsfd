@@ -6,6 +6,7 @@
             <h4 class="card-title">{!! __('incidents.quick_incident_control') !!}</h4>
         </div>
     </div>
+    @can('view_incident_manager_panel')
     <div class="iq-card-body">
         <div class="form-group row">
             <label class="control-label col-sm-2 align-self-center mb-0">{!! __('incidents.incident_selector') !!}:</label>
@@ -13,9 +14,9 @@
                 <select type="select" onchange="fetchIncidentInfo(this)" class="form-control" id="lsfd-incident-manager-input-incident_selector" name="type">
                     <option selected="" disabled="" value="">{!! __('incidents.placeholder_incident_selector') !!}</option>
                     @foreach($incidents as $incident)
-                        <option data-incident-id="{{ $incident->id }}" value="">{!! __('incidents.incident') !!} #{{ sprintf("%04d", $incident->id) }} - {{ config_trans('constants.incidents.response.'.$incident->response) }} - {{ $incident->title }}</option>
+                        <option data-incident-id="{{ $incident->id }}" @cannot('edit_incident') disabled @endcannot value="">{!! __('incidents.incident') !!} #{{ sprintf("%04d", $incident->id) }} - {{ config_trans('constants.incidents.response.'.$incident->response) }} - {{ $incident->title }}</option>
                     @endforeach
-                    <option data-incident-id="new" class="text-success">+ {!! __('incidents.create_new_incident') !!}</option>
+                    <option data-incident-id="new" @cannot('create_incident') disabled @endcannot class="text-success">+ {!! __('incidents.create_new_incident') !!}</option>
                 </select>
                 <label for="lsfd-incident-manager-input-incident_selector" class="invalid-feedback"></label>
             </div>
@@ -105,6 +106,11 @@
             <button type="button" class="btn btn-warning"><i class="ri-archive-line"></i> Save & Archive</button>
         </form>
     </div>
+    @else
+    <div class="iq-card-body">
+        <x-auth.lack_perms/>
+    </div>
+    @endcan
 </div>
 
 

@@ -19,6 +19,7 @@ $('#antelope-create-user-form').on('submit', function(e) {
   e.preventDefault();
   var form = $('#antelope-create-user-form');
   var username = $('#antelope-create-user-input-username').val();
+  var name = $('#antelope-create-user-input-name').val();
   var email = $('#antelope-create-user-input-email').val();
   var password = $('#antelope-create-user-input-password').val();
   var rank = $('#antelope-create-user-input-rank').val();
@@ -27,7 +28,7 @@ $('#antelope-create-user-form').on('submit', function(e) {
   $.ajax({
     type: 'POST',
     url: base_url + '/admin/add_user',
-    data: {'username':username, 'email':email, 'password':password, 'rank':rank},
+    data: {'username':username, 'email':email, 'password':password, 'rank':rank, 'name':name},
     success: function(data) {
         $('#datatable').DataTable().ajax.reload();
         toastr.success(Lang.get('user_management.user_created'));

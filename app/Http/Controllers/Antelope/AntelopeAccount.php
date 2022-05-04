@@ -64,6 +64,10 @@ class AntelopeAccount extends Controller
     {
         $user = auth()->user();
 
+        if(!auth()->user()->can('edit_own_profile')) {
+            return abort(403);
+        }
+
         $this->validate($request, [
             'username' => 'required|unique:users,username,'.$user->id,
             'name' => 'required|min:3',
@@ -90,6 +94,10 @@ class AntelopeAccount extends Controller
     public function changePassword(Request $request)
     {
         $user = auth()->user();
+
+        if(!auth()->user()->can('edit_own_password')) {
+            return abort(403);
+        }
 
         $this->validate($request, [
             'current_password' => ['required', new MatchOldPassword],

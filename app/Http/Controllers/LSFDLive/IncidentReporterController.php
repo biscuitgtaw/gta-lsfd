@@ -30,6 +30,8 @@ class IncidentReporterController extends Controller
      */
     public function __construct()
     {
+        $this->middleware('auth');
+        $this->middleware(['permission:get_incident_reporter_tab']);
         $this->constants = \Config::get('constants');
         View::share('constants', $this->constants);
     }
@@ -45,6 +47,9 @@ class IncidentReporterController extends Controller
      */
     public function index()
     {
+        if(!auth()->user()->can('view_incident_center')) {
+            return abort(403);
+        }
         $incidents = Incident::all();
 
         return view('lsfd.incident_reporter.control_center')->with('incidents', $incidents);

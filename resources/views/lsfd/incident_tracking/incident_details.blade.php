@@ -20,6 +20,7 @@
                     <div class="iq-card iq-card-block iq-card-stretch">
                         <div class="iq-card-body pb-0">
                             <h2 class="mb-0">{!! __('incidents.incident') !!} #{{ sprintf("%04d", $incident->id) }} - {{ config_trans('constants.incidents.response.'.$incident->response) }} - {{ $incident->title }}</h2>
+                            @can('view_incident_details')
                             <p class="mb-0">{!! __('incidents.description') !!}:</p>
                             <h6 class="mb-4">{{ $incident->description ? $incident->description : __('incidents.no_description_set') }}</h6>
                             <p class="mb-0">{!! __('incidents.responding_units') !!}:</p>
@@ -32,10 +33,14 @@
                                 <p class="mb-0">{!! __('incidents.status') !!}:</p>
                                 <h2><span class="badge badge-secondary">{{ config_trans('constants.incidents.status.'.$incident->status) }}</span></h2>
                             </div>
+                            @else
+                            <x-auth.lack_perms/>
+                            @endcan
                         </div>
                         <div class="iq-card-body pt-0">
                             <hr>
                             <h3 class="mb-0">{!! __('incidents.incident_timeline') !!}</h3>
+                            @can('view_incident_timeline')
                             <ul class="iq-timeline">
                                 @forelse($incident->timeline as $timeline)
                                 <li>
@@ -54,9 +59,13 @@
                                     </div>
                                 </li>
                                 @empty
+                                </ul>
                                 There is currently no timeline.
                                 @endforelse
                             </ul>
+                            @else
+                            <x-auth.lack_perms/>
+                            @endcan
                         </div>
                     </div>
                 </div>

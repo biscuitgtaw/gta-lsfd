@@ -8,6 +8,7 @@
 
     <div class="container-fluid">
 
+        @can('create_user')
     	<div class="row">
     		<div class="col-lg-12 mb-3">
     			<div class="float-right">
@@ -15,6 +16,7 @@
     			</div>
     		</div>
     	</div>
+        @endcan
 
         <div class="row">
             <div class="col-lg-12 mx-auto">

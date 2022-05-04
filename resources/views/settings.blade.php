@@ -17,6 +17,7 @@
                             </div>
                         </div>
                         <div class="iq-card-body">
+                            @can('edit_own_profile')
                             <form id="antelope-settings-profile-form">
                                 <div class="form-group">
                                     <label>{!! __('settings.input_username') !!}:</label>
@@ -36,6 +37,9 @@
                                 <button type="submit" class="btn btn-primary">{!! __('core.submit') !!}</button>
                                 <button type="reset" class="btn iq-bg-danger">{!! __('core.cancel') !!}</button>
                             </form>
+                            @else
+                            <x-auth.lack_perms/>
+                            @endcan
                         </div>
                     </div>
                 </div>
@@ -50,6 +54,7 @@
                             </div>
                         </div>
                         <div class="iq-card-body">
+                            @can('edit_own_password')
                             <form id="antelope-settings-password-form">
                                 <div class="form-group">
                                     <label>{!! __('settings.input_old_password') !!}:</label>
@@ -69,6 +74,9 @@
                                 <button type="submit" class="btn btn-primary">{!! __('core.submit') !!}</button>
                                 <button type="reset" class="btn iq-bg-danger">{!! __('core.cancel') !!}</button>
                             </form>
+                            @else
+                            <x-auth.lack_perms/>
+                            @endcan
                         </div>
                     </div>
                 </div>
