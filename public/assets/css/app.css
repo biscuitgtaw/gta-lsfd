@@ -1,0 +1,81 @@
+.table-striped tbody tr:nth-of-type(odd) {
+	background-color: rgba(0,0,0,.05);
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+	background-color: rgba(0,0,0,.05);
+}
+
+.modal-content {
+	background-color: #2d325a;
+	color: #8c91b6;
+}
+
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
+	color: #8c91b6 !important;
+}
+
+.form-control {
+    color: white;
+}
+
+.form-control:focus {
+    color: white;
+}
+label {
+    display: inline-block;
+    margin-bottom: 0px;
+}
+
+.form-control:disabled, .form-control[readonly] {
+    background-color: #2b2e4c;
+    color: #aeaeae;
+    opacity: 1;
+}
+
+#loading {
+    background-color: #202442;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    margin-top: 0px;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    overflow: hidden !important;
+    right: 0px;
+    z-index: 999999;
+}
+
+.dataTables_wrapper .dataTables_length select {
+    color: #ffffff;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    color: #ffffff;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    color: white !important;
+}
+
+.ant-joinus-btn { color: #212529 !important; display: inline-block; text-align: center; border: 1px solid transparent; padding: .375rem 1rem; border-radius: .25rem; background-color: #d39e00; border-color: #c69500; }
+.ant-joinus-btn:hover { background: #ffd400 !important; }
+
+.lsfd-explorer-bg {
+    background: rgb(255,0,89);
+    background: linear-gradient(125deg, rgba(255,255,255,0) 0%, rgba(99,0,0,0.6348914565826331) 31%, rgba(121,0,0,1) 56%, rgba(255,0,0,1) 100%), url("../images/lsfd/explorer-bg-img.png") no-repeat -600px -400px;
+}
+.lsfd-joinus-disclaimer {
+    font-size: 12px;
+}
+#lsfd-explorer-form { position: relative; }
+#lsfd-explorer-form input[type="file"] {line-height: 27px;}
+#lsfd-explorer-form fieldset:not(:first-of-type) { display: none }
+
+.custom-control-input:disabled~.custom-control-label::before, .custom-control-input[disabled]~.custom-control-label::before {
+    background-color: #6c757d;
+}
+
+.ant-discord-btn { color: white !important; display: inline-block; text-align: center; border: 1px solid transparent; padding: .375rem 1rem; border-radius: .25rem; background-color: #5865F2; border-color: #404EED; }
+.ant-discord-btn:hover { background: #404EED !important; }

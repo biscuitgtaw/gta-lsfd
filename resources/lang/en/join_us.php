@@ -1,0 +1,73 @@
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Join Page Language Lines
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
+
+    'become_an_explorer' => 'Become a Fire Explorer',
+    'sidebar_explorer' => 'Become an Explorer',
+    'explorer_description1' => 'Get exclusive access to explorer-only features that enable you, the user, to follow our firefighters in their day-to-day duties within the Los Santos Fire Department.',
+    'explorer_feature1' => 'Access to responding units',
+    'explorer_feature2' => 'Access to incident history',
+    'explorer_feature3' => 'Access to incident details',
+    'explorer_feature4' => 'Access to an exclusive gallery',
+    'explorer_feature5' => 'Access to community updates',
+    'explorer_feature6' => 'Access to firefighter interviews',
+    'explorer_feature7' => 'Chat with our firefighters',
+    'explorer_feature8' => 'Participate in giveaways',
+    'enroll_now' => 'Enroll now',
+    'enroll_now_disclaimer' => '* Registrations are completely free but require ID verification.',
+    'media' => 'Are you part of the Media?',
+    'media_description1' => 'We offer media outlets access to some of the same access as Fire Explorers have and some exclusive features that allow the media fast access to information for articles.',
+    'request_press_access' => 'Request Press Access',
+    'guest_access' => 'Guest Access',
+    'fire_explorer' => 'Fire Explorer',
+    'feature1' => 'Press Releases',
+    'feature2' => 'Important Announcements',
+    'feature3' => 'Live Map',
+    'feature4' => 'Detailed Live Map',
+    'feature5' => 'Incident Timeline',
+    'feature6' => 'Incident Responders',
+    'feature7' => 'Community Updates',
+    'feature8' => 'Firefighter Insights',
+    'feature9' => 'Giveaway Participation',
+    'feature10' => 'Gallery',
+    'no_registration' => 'No registration required',
+    'free_registration' => 'Free registration',
+    'account' => 'Account',
+    'profile' => 'Profile',
+    'verification' => 'Verification',
+    'finish' => 'Finish',
+    'account_information' => 'Account Information',
+    'form_disclaimer' => '(( This entire form is in-character unless otherwise stated, you may put a real or fake email account in the email field, account verification is not required and you will not get any emails. ))',
+    'input_username' => 'Username',
+    'input_email' => 'Email',
+    'input_password' => 'Password',
+    'input_confirm_password' => 'Confirm Password',
+    'placeholder_username' => 'Username',
+    'placeholder_email' => 'Email',
+    'placeholder_password' => 'Password',
+    'placeholder_confirm_password' => 'Confirm Password',
+    'personal_information' => 'Profile Information',
+    'input_first_name' => 'First Name',
+    'input_last_name' => 'Last Name',
+    'placeholder_first_name' => 'First Name',
+    'placeholder_last_name' => 'Last Name',
+    'policy_verification' => 'Policy Verification',
+    'identification_card' => 'Identification Card',
+    'identification_card_disclaimer' => 'For verification purposes, please provide a picture of the front and back of your San Andreas Identification Card or San Andreas Drivers License. This is to confirm you residency within San Andreas and to confirm that you are a San Andreas Citizen as well as a United States Citizen.',
+    'identification_card_ooc_disclaimer' => '(( Please note that if you have provided a fake name, you are not allowed to go past this step. Even if you provided a Fake ID it would be picked up by the government agency and your account wouldn\'t be created. Proceeding further with fake details would be classed as powergaming. Also note that if your character is not an approved San Andreas Citizen, you are not allowed to proceed past this step. ))',
+    'checkbox_tos' => 'I am 13 years of age or older and agree to the <u><a href="/tos">Terms of Service</a></u> and our <u><a href="/privacy_policy">Privacy Policy</a></u>.',
+    'checkbox_not_media' => 'I declare under the penalties of perjury that I am not in any way affiliated with any media outlet, be it via the means of employment, self-employment, independent contract work or organized contract work. I also add that the purpose for the creation of this account is only for personal use and not in any way connected to commercial use.',
+    'checkbox_roleplay' => 'takes a picture of the front and back of their San Andreas Identification Card and uploads it onto the verification form.',
+    'account_created' => 'Account Created!',
+    'welcome' => 'Welcome to the explorer program!',
+    'able_to_login' => 'You are now able to login using the following account username: ',
+    'form_errors' => 'Please double-check all of the input fields.',
+];
