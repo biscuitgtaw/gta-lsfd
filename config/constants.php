@@ -75,26 +75,117 @@ define("COMMUNITY_DISCORD", env('COMMUNITY_DISCORD', 'https://discord.gg/'));
 define("APP_VERSION", '1.0.0');
 
 return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Incident Prefixing
+    | ------------------------
+    | + Here you can modify the naming prefix for incidents, the actual
+    | display language can be found in the language files.
+    |--------------------------------------------------------------------------
+    |
+    */
+
     'incidents' => [
         'status' => [
             1 => 'incidents.unresolved',
             2 => 'incidents.resolved',
-            3 => 'incidents.unknown',
+            99 => 'incidents.unknown',
         ],
 
-        'type' => [
+        'severeness' => [
             1 => 'incidents.lvl1',
             2 => 'incidents.lvl2',
             3 => 'incidents.lvl3',
-            4 => 'incidents.other',
+            99 => 'incidents.other',
         ],
 
-        'response' => [
+        'report' => [
             1 => 'incidents.emergency_call',
-            2 => 'incidents.department_response',
-            3 => 'incidents.other',
+            2 => 'incidents.department_report',
+            3 => 'incidents.event',
+            99 => 'incidents.other',
+        ],
+
+        'type' => [
+            1 => 'incidents.medical_emergency',
+            2 => 'incidents.fire_rescue_emergency',
+            3 => 'incidents.technical_emergency',
+            4 => 'incidents.hazardous_materials_emergency',
+            5 => 'incidents.department_operation',
+            98 => 'incidents.unknown_emergency',
+            99 => 'incidents.other_emergency',
         ],
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Incident Coloring
+    | ------------------------
+    | + Here you can modify the colors for incidents.
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    'incident_colors' => [
+        'status' => [
+            1 => 'warning',
+            2 => 'success',
+            99 => 'secondary',
+        ],
+
+        'severeness' => [
+            1 => 'success',
+            2 => 'warning',
+            3 => 'danger',
+            99 => 'info',
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Map Configuration
+    | ------------------------
+    | + Here you can modify the icons for incidents and colors for incident
+    | markers.
+    |
+    | Marker Colors: 'red', 'darkred', 'orange', 'green', 'darkgreen', 'blue', 
+    | 'purple', 'darkpurple', 'cadetblue'
+    |
+    | Icons: Only Font Awesome Solid icons are supported. fas fa prefix
+    | is already applied.
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    'map_config' => [
+        'severeness_marker_color' => [
+            1 => 'green',
+            2 => 'orange',
+            3 => 'darkred',
+            99 => 'blue',
+        ],
+
+        'type_marker_icon' => [
+            1 => 'briefcase-medical',
+            2 => 'fire',
+            3 => 'wrench',
+            4 => 'biohazard',
+            5 => 'tower-observation',
+            98 => 'question',
+            99 => 'fire-extinguisher',
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Site Permissions
+    | ------------------------
+    | + Don't edit this if you don't know what you're doing, this is the list
+    | of all permissions on the site, it is ran during the installation script
+    |--------------------------------------------------------------------------
+    |
+    */
 
     'site_permissions' => [
         'get_superadmin_tab',

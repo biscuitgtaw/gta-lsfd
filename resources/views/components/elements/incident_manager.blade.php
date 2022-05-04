@@ -14,7 +14,7 @@
                 <select type="select" onchange="fetchIncidentInfo(this)" class="form-control" id="lsfd-incident-manager-input-incident_selector" name="type">
                     <option selected="" disabled="" value="">{!! __('incidents.placeholder_incident_selector') !!}</option>
                     @foreach($incidents as $incident)
-                        <option data-incident-id="{{ $incident->id }}" @cannot('edit_incident') disabled @endcannot value="">{!! __('incidents.incident') !!} #{{ sprintf("%04d", $incident->id) }} - {{ config_trans('constants.incidents.response.'.$incident->response) }} - {{ $incident->title }}</option>
+                        <option data-incident-id="{{ $incident->id }}" @cannot('edit_incident') disabled @endcannot value="">{!! __('incidents.incident') !!} #{{ sprintf("%04d", $incident->id) }} - {{ config_trans('constants.incidents.type.'.$incident->type) }} - {{ $incident->title }}</option>
                     @endforeach
                     <option data-incident-id="new" @cannot('create_incident') disabled @endcannot class="text-success">+ {!! __('incidents.create_new_incident') !!}</option>
                 </select>
@@ -47,7 +47,7 @@
                             <option data-x-axis="{{ $street['loc'][0] }}" data-y-axis="{{ $street['loc'][1] }}" value="">{{ $street['title'] }}</option>
                         @endforeach
                     </select>
-                    <label for="antelope-create-user-input-rank" class="invalid-feedback"></label>
+                    <label for="antelope-create-user-input-location" class="invalid-feedback"></label>
                 </div>
             </div>
             <div class="form-group row d-none" id="lsfd-incident-manager-display-coordinates">
@@ -55,18 +55,6 @@
                 <div class="col-sm-10">
                     <input disabled type="input" class="form-control" id="lsfd-incident-manager-input-coordinates" name="coordinates" placeholder="{!! __('incidents.placeholder_coordinates') !!}">
                     <label for="lsfd-incident-manager-input-coordinates" class="invalid-feedback"></label>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="control-label col-sm-2 align-self-center mb-0">{!! __('incidents.input_response') !!}:</label>
-                <div class="col-sm-10">
-                    <select disabled type="select" class="form-control" id="lsfd-incident-manager-input-response" name="response">
-                        <option selected="" disabled="" value="">{!! __('incidents.placeholder_response') !!}</option>
-                        @foreach(config('constants.incidents.response') as $key => $value)
-                            <option value="{{ $key }}">{{ __($value) }}</option>
-                        @endforeach
-                    </select>
-                    <label for="antelope-create-user-input-rank" class="invalid-feedback"></label>
                 </div>
             </div>
             <div class="form-group row">
@@ -82,6 +70,30 @@
                 </div>
             </div>
             <div class="form-group row">
+                <label class="control-label col-sm-2 align-self-center mb-0">{!! __('incidents.input_report') !!}:</label>
+                <div class="col-sm-10">
+                    <select disabled type="select" class="form-control" id="lsfd-incident-manager-input-report" name="report">
+                        <option selected="" disabled="" value="">{!! __('incidents.placeholder_report') !!}</option>
+                        @foreach(config('constants.incidents.report') as $key => $value)
+                            <option value="{{ $key }}">{{ __($value) }}</option>
+                        @endforeach
+                    </select>
+                    <label for="antelope-create-user-input-report" class="invalid-feedback"></label>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-2 align-self-center mb-0">{!! __('incidents.input_severeness') !!}:</label>
+                <div class="col-sm-10">
+                    <select disabled type="select" class="form-control" id="lsfd-incident-manager-input-severeness" name="severeness">
+                        <option selected="" disabled="" value="">{!! __('incidents.placeholder_severeness') !!}</option>
+                        @foreach(config('constants.incidents.severeness') as $key => $value)
+                            <option value="{{ $key }}">{{ __($value) }}</option>
+                        @endforeach
+                    </select>
+                    <label for="lsfd-incident-manager-input-severeness" class="invalid-feedback"></label>
+                </div>
+            </div>
+            <div class="form-group row">
                 <label class="control-label col-sm-2 align-self-center mb-0">{!! __('incidents.input_status') !!}:</label>
                 <div class="col-sm-10">
                     <select disabled type="select" class="form-control" id="lsfd-incident-manager-input-status" name="status">
@@ -90,7 +102,7 @@
                             <option value="{{ $key }}">{{ __($value) }}</option>
                         @endforeach
                     </select>
-                    <label for="lsfd-incident-manager-input-type" class="invalid-feedback"></label>
+                    <label for="lsfd-incident-manager-input-status" class="invalid-feedback"></label>
                 </div>
             </div>
             <div class="form-group row">

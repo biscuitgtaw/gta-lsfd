@@ -68,8 +68,9 @@ class IncidentTrackingController extends Controller
             'title' => 'required|string|min:3',
             'description' => 'required|min:3',
             'coordinates' => 'required|min:3',
-            'response' => 'required|integer',
+            'report' => 'required|integer',
             'type' => 'required|integer',
+            'severeness' => 'required|integer',
             'status' => 'required|integer',
             'responding_units' => 'required|string|min:3'
         ]);
@@ -79,8 +80,9 @@ class IncidentTrackingController extends Controller
         $incident->title = $request['title'];
         $incident->description = $request['description'];
         $incident->coordinates = $request['coordinates'];
-        $incident->response = $request['response'];
+        $incident->report = $request['report'];
         $incident->type = $request['type'];
+        $incident->severeness = $request['severeness'];
         $incident->status = $request['status'];
         $incident->responding_units = $request['responding_units'];
         $incident->save();
@@ -108,8 +110,9 @@ class IncidentTrackingController extends Controller
             'title' => 'required|string|min:3',
             'description' => 'required|min:3',
             'coordinates' => 'required|min:3',
-            'response' => 'required|integer',
+            'report' => 'required|integer',
             'type' => 'required|integer',
+            'severeness' => 'required|integer',
             'status' => 'required|integer',
             'responding_units' => 'required|string|min:3'
         ]);
@@ -119,8 +122,9 @@ class IncidentTrackingController extends Controller
         $incident->title = $request['title'];
         $incident->description = $request['description'];
         $incident->coordinates = $request['coordinates'];
-        $incident->response = $request['response'];
+        $incident->report = $request['report'];
         $incident->type = $request['type'];
+        $incident->severeness = $request['severeness'];
         $incident->status = $request['status'];
         $incident->responding_units = $request['responding_units'];
         $incident->save();

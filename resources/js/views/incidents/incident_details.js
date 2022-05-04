@@ -19,15 +19,17 @@ DOM onReady
 -----------------------------------------------------------------------*/
 document.addEventListener("DOMContentLoaded", function(){
 
+    var incident = window['incident'];
+
     var incidentIcon = L.AwesomeMarkers.icon({
         prefix: 'fas fa',
-        markerColor: 'darkred',
+        markerColor: window['constants.map_config.severeness_marker_color.'+incident.severeness],
         iconColor: 'white',
-        icon: 'fire',
+        icon: window['constants.map_config.type_marker_icon.'+incident.type],
     });
 
     var map = lsmap[0];
-    var coordinates = window['incident_coordinates'].split(',');
+    var coordinates = incident.coordinates.split(',');
 
     L.marker(coordinates,{icon: incidentIcon, zIndexOffset: 98}).addTo(map);
 

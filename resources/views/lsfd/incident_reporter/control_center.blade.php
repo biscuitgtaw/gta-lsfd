@@ -82,6 +82,7 @@
 
 @section('phpjs')
     @javascript(fetch_config('constants.incidents'))
+    @javascript(fetch_config('constants.map_config'))
 @endsection
 
 @section('javascript')

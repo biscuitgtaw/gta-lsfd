@@ -31,17 +31,19 @@ $( document ).ready(function() {
         }
     }).done( function(incidentLocations) {
 
-        var incidentIcon = L.AwesomeMarkers.icon({
-            prefix: 'fas fa',
-            markerColor: 'darkred',
-            iconColor: 'white',
-            icon: 'fire',
-        });
-
         incidentLocations.forEach(function(item) {
             var map = lsmap[0];
             var coordinates = item.coordinates.split(',');
-            L.marker(coordinates,{icon: incidentIcon, zIndexOffset: 98}).bindPopup("<b>"+Lang.get('incidents.incident')+" #"+zeroFill(item.id,4)+" - "+window['constants.incidents.response.'+item.response]+" - "+item.title+"</b>",popupOptions).addTo(map);
+            L.marker(coordinates, {
+                icon: L.AwesomeMarkers.icon({
+                    prefix: 'fas fa',
+                    markerColor: window['constants.map_config.severeness_marker_color.'+item.severeness],
+                    iconColor: 'white',
+                    icon: window['constants.map_config.type_marker_icon.'+item.type],
+                }),
+                zIndexOffset: 98
+             }).bindPopup("<b>"+Lang.get('incidents.incident')+" #"+zeroFill(item.id,4)+" - "+window['constants.incidents.type.'+item.type]+" - "+item.title+"</b>"
+             +"<p>"+Lang.get('incidents.responding_units')+": "+item.responding_units+"</p>", popupOptions).addTo(map);
         });
     });
 });

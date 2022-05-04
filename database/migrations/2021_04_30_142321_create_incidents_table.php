@@ -17,13 +17,15 @@ class CreateIncidentsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('reporter_id');
             $table->foreign('reporter_id')->references('id')->on('users')->onDelete('cascade');;
-            $table->integer('response');
+            $table->integer('report');
             $table->integer('type');
+            $table->integer('severeness');
             $table->integer('status');
             $table->string('responding_units');
             $table->string('title');
             $table->longText('description');
             $table->string('coordinates');
+            $table->boolean('archived')->default(0);
             $table->timestamps();
         });
     }

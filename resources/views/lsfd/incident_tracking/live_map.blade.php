@@ -15,16 +15,6 @@
 
         <div class="container-fluid">
 
-            @can('incident_reporter')
-            <div class="row">
-                <div class="col-lg-12 mb-3">
-                    <div class="float-right">
-                        <button type="button" class="btn btn-success" data-toggle="modal" id="lsfd-create-incident-modal-button" data-target="#lsfd-create-incident-modal">+ {!! __('incidents.create_incident') !!}</button>
-                    </div>
-                </div>
-            </div>
-            @endcan
-
             <div class="row">
                 <div class="col-sm-4">
                     <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
@@ -69,14 +59,9 @@
     </div>
 @endsection
 
-@section('modals')
-    @can('incident_reporter')
-        <x-modals.create_incident/>
-    @endcan
-@endsection
-
 @section('phpjs')
     @javascript(fetch_config('constants.incidents'))
+    @javascript(fetch_config('constants.map_config'))
 @endsection
 
 @section('javascript')
@@ -90,8 +75,5 @@
     <script src="{{ asset('js/views/map/locations.js') }}"></script>
     <script src="{{ asset('js/views/map/map.js') }}"></script>
     <script src="{{ asset('js/views/incidents/live_map.js') }}"></script>
-    @can('incident_reporter')
-        <script src="{{ asset('js/views/components/modals/create_incident.js') }}"></script>
-    @endcan
 @endsection
 

@@ -39,8 +39,9 @@ function fetchIncidentInfo(e) {
     $('#lsfd-incident-manager-input-description').removeAttr('disabled');
     $('#lsfd-incident-manager-input-coordinates').removeAttr('disabled');
     $('#lsfd-incident-manager-input-location').removeAttr('disabled');
-    $('#lsfd-incident-manager-input-response').removeAttr('disabled');
+    $('#lsfd-incident-manager-input-report').removeAttr('disabled');
     $('#lsfd-incident-manager-input-type').removeAttr('disabled');
+    $('#lsfd-incident-manager-input-severeness').removeAttr('disabled');
     $('#lsfd-incident-manager-input-status').removeAttr('disabled');
     $('#lsfd-incident-manager-input-responding_units').removeAttr('disabled');
 
@@ -56,8 +57,9 @@ function fetchIncidentInfo(e) {
                 $('#lsfd-incident-manager-input-description').val(data.description);
                 $('#lsfd-incident-manager-display-coordinates').removeClass('d-none');
                 $('#lsfd-incident-manager-input-coordinates').val(data.coordinates);
-                $('#lsfd-incident-manager-input-response').val(data.response);
                 $('#lsfd-incident-manager-input-type').val(data.type);
+                $('#lsfd-incident-manager-input-report').val(data.report);
+                $('#lsfd-incident-manager-input-severeness').val(data.severeness);
                 $('#lsfd-incident-manager-input-status').val(data.status);
                 $('#lsfd-incident-manager-input-responding_units').val(data.responding_units);
 
@@ -83,8 +85,9 @@ $('#lsfd-incident-manager-form').on('submit', function(e) {
     var title = $('#lsfd-incident-manager-input-title').val();
     var description = $('#lsfd-incident-manager-input-description').val();
     var coordinates = $('#lsfd-incident-manager-input-coordinates').val();
-    var response = $('#lsfd-incident-manager-input-response').val();
+    var report = $('#lsfd-incident-manager-input-report').val();
     var type = $('#lsfd-incident-manager-input-type').val();
+    var severeness = $('#lsfd-incident-manager-input-severeness').val();
     var status = $('#lsfd-incident-manager-input-status').val();
     var responding_units = $('#lsfd-incident-manager-input-responding_units').val();
     clearErrors(form);
@@ -94,7 +97,7 @@ $('#lsfd-incident-manager-form').on('submit', function(e) {
         $.ajax({
             type: 'POST',
             url: base_url + '/incidents/create',
-            data: {title:title, description:description, coordinates:coordinates, response:response, type:type, status:status, responding_units:responding_units},
+            data: {title:title, description:description, coordinates:coordinates, report:report, type:type, severeness:severeness, status:status, responding_units:responding_units},
             success: function(data) {
                 e.preventDefault();
                 toastr.success(Lang.get('incidents.incident_created'));
@@ -112,7 +115,7 @@ $('#lsfd-incident-manager-form').on('submit', function(e) {
         $.ajax({
             type: 'POST',
             url: base_url + '/incidents/modify/' + incident_selector,
-            data: {title:title, description:description, coordinates:coordinates, response:response, type:type, status:status, responding_units:responding_units},
+            data: {title:title, description:description, coordinates:coordinates, report:report, severeness:severeness, type:type, status:status, responding_units:responding_units},
             success: function(data) {
                 e.preventDefault();
                 toastr.success(Lang.get('incidents.incident_created'));
