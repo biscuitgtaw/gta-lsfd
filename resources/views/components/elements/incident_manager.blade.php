@@ -115,7 +115,7 @@
             <hr/>
             <button type="submit" class="btn btn-success"><i class="ri-save-3-line"></i> Save & Publish</button>
             <button type="button" class="btn btn-primary" disabled><i class="ri-list-check"></i> Manage Timeline</button>
-            <button type="button" class="btn btn-warning"><i class="ri-archive-line"></i> Save & Archive</button>
+            <button type="button" class="btn btn-warning" id="lsfd-incident-manager-btn-save_archive"><i class="ri-archive-line"></i> Save & Archive</button>
         </form>
     </div>
     @else

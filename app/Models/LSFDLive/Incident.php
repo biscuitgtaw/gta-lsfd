@@ -21,7 +21,7 @@ class Incident extends Model
      * @version 1.0.0
      */
     protected $fillable = [
-        'reporter', 'response', 'type', 'title', 'description', 'responding_units', 'coordinates', 'status'
+        'reporter', 'report', 'severeness', 'type', 'title', 'description', 'responding_units', 'coordinates', 'status', 'archived'
     ];
 
     public function timeline() {

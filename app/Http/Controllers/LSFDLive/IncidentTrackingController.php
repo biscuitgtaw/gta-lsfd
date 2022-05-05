@@ -72,7 +72,8 @@ class IncidentTrackingController extends Controller
             'type' => 'required|integer',
             'severeness' => 'required|integer',
             'status' => 'required|integer',
-            'responding_units' => 'required|string|min:3'
+            'responding_units' => 'required|string|min:3',
+            'archive' => 'nullable|boolean',
         ]);
 
         $incident = new Incident();
@@ -84,6 +85,7 @@ class IncidentTrackingController extends Controller
         $incident->type = $request['type'];
         $incident->severeness = $request['severeness'];
         $incident->status = $request['status'];
+        $incident->archived = $request['archive'] ? 1 : 0;
         $incident->responding_units = $request['responding_units'];
         $incident->save();
 
@@ -114,7 +116,8 @@ class IncidentTrackingController extends Controller
             'type' => 'required|integer',
             'severeness' => 'required|integer',
             'status' => 'required|integer',
-            'responding_units' => 'required|string|min:3'
+            'responding_units' => 'required|string|min:3',
+            'archive' => 'nullable|boolean',
         ]);
 
         $incident = Incident::where('id', $id)->first();
@@ -126,6 +129,7 @@ class IncidentTrackingController extends Controller
         $incident->type = $request['type'];
         $incident->severeness = $request['severeness'];
         $incident->status = $request['status'];
+        $incident->archived = $request['archive'] ? 1 : 0;
         $incident->responding_units = $request['responding_units'];
         $incident->save();
 

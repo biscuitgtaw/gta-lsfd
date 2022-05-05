@@ -91,7 +91,6 @@ $('#lsfd-incident-manager-form').on('submit', function(e) {
     var status = $('#lsfd-incident-manager-input-status').val();
     var responding_units = $('#lsfd-incident-manager-input-responding_units').val();
     clearErrors(form);
-    console.log(incident_selector);
 
     if(incident_selector == 'new') {
         $.ajax({
@@ -132,6 +131,65 @@ $('#lsfd-incident-manager-form').on('submit', function(e) {
     }
     
 });
+
+/*---------------------------------------------------------------------
+(Ajax) Saving & Archiving
+-----------------------------------------------------------------------*/
+
+$('#lsfd-incident-manager-btn-save_archive').on('click', function(e) {
+    e.preventDefault();
+    var incident_selector = $('#lsfd-incident-manager-input-incident_selector').find(':selected').data('incident-id');
+    var form = $('#lsfd-incident-manager-form');
+    var title = $('#lsfd-incident-manager-input-title').val();
+    var description = $('#lsfd-incident-manager-input-description').val();
+    var coordinates = $('#lsfd-incident-manager-input-coordinates').val();
+    var report = $('#lsfd-incident-manager-input-report').val();
+    var type = $('#lsfd-incident-manager-input-type').val();
+    var severeness = $('#lsfd-incident-manager-input-severeness').val();
+    var status = $('#lsfd-incident-manager-input-status').val();
+    var responding_units = $('#lsfd-incident-manager-input-responding_units').val();
+    clearErrors(form);
+
+    if(incident_selector == 'new') {
+        $.ajax({
+            type: 'POST',
+            url: base_url + '/incidents/create',
+            data: {title:title, description:description, coordinates:coordinates, report:report, type:type, severeness:severeness, status:status, responding_units:responding_units, archive:1},
+            success: function(data) {
+                e.preventDefault();
+                toastr.success(Lang.get('incidents.incident_created'));
+                $('.close').click();
+                form.trigger('reset');
+                clearForm(form);
+                $("#lsfd-incident-manager-filler-incident_selector").load(location.href + " #lsfd-incident-manager-filler-incident_selector>*");
+            },
+            error: function(data) {
+                toastr.error(Lang.get('core.error'));
+                displayErrors(data, form);
+            }
+        });
+    } else {
+        $.ajax({
+            type: 'POST',
+            url: base_url + '/incidents/modify/' + incident_selector,
+            data: {title:title, description:description, coordinates:coordinates, report:report, severeness:severeness, type:type, status:status, responding_units:responding_units, archive:1},
+            success: function(data) {
+                e.preventDefault();
+                toastr.success(Lang.get('incidents.incident_created'));
+                $('.close').click();
+                form.trigger('reset');
+                clearForm(form);
+                $("#lsfd-incident-manager-filler-incident_selector").load(location.href + " #lsfd-incident-manager-filler-incident_selector>*");
+            },
+            error: function(data) {
+                toastr.error(Lang.get('core.error'));
+                displayErrors(data, form);
+            }
+        });
+    }
+    
+});
+
 
 
 /*---------------------------------------------------------------------
